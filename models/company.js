@@ -1,7 +1,7 @@
 
 /* Company Model */
 const {DataTypes} = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/sequlize');
 
 const Companies = sequelize.define('Companies', {
     id: {

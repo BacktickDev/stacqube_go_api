@@ -1,12 +1,20 @@
 /* Role Model */
 const {DataTypes} = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/sequlize');
 
 const Roles = sequelize.define('Roles', {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true
+        defaultValue: DataTypes.UUIDV4
+    },
+    companyId:{
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'Companies',
+            key: 'id'
+        }
     },
     roleName: {
         type: DataTypes.STRING,

@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const sequelize = require('./config/sequelize');
+const sequelize = require('./config/sequlize');
 require('dotenv').config();
 const app = express();
 const port = 3000;
 const cors = require('cors');
+const routes = require('./routes/index');
 
 
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -13,6 +14,8 @@ app.use(cors());
 app.use(cors({
     origin: '*'
 }));
+
+app.use('/api', routes);
 
 app.listen(port, () => {
     sequelize.authenticate()
