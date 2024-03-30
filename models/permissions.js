@@ -2,23 +2,38 @@
 const {DataTypes} = require('sequelize');
 const sequelize = require('../config/sequlize');
 
-const PackageModules = sequelize.define('PackageModules', {
+const Permissions = sequelize.define('Permissions', {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4
     },
-    packageId: {
-        type: DataTypes.UUID,
-        references: {
-            model: 'SubscriptionPackage',
-            key: 'id'
-        }
+    permissionName: {
+        type: DataTypes.STRING
     },
-    moduleId: {
+
+    permissionLabel: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    moduleId:{
         type: DataTypes.UUID,
         references: {
             model: 'Modules',
+            key: 'id'
+        }
+    },
+    subModuleId:{
+        type: DataTypes.UUID,
+        references: {
+            model: 'SubModules',
+            key: 'id'
+        }
+    },
+    companyId:{
+        type: DataTypes.UUID,
+        references: {
+            model: 'Companies',
             key: 'id'
         }
     },
@@ -28,4 +43,4 @@ const PackageModules = sequelize.define('PackageModules', {
     }
 });
 
-module.exports = PackageModules;
+module.exports = Permissions;

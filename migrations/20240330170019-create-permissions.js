@@ -2,26 +2,46 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('PackageModules', {
+    await queryInterface.createTable('Permissions', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4
+
       },
-      packageId: {
-        type: Sequelize.UUID,
-        references: {
-          model: 'SubscriptionPackages',
-          key: 'id'
-        }
+      permissionName: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      moduleId: {
+      permissionLabel: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      moduleId:{
         type: Sequelize.UUID,
         references: {
           model: 'Modules',
           key: 'id'
         }
+      },
+      subModuleId:{
+        type: Sequelize.UUID,
+        references: {
+          model: 'SubModules',
+          key: 'id'
+        }
+      },
+      companyId:{
+        type: Sequelize.UUID,
+        references: {
+          model: 'Companies',
+          key: 'id'
+        }
+      },
+      status:{
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +54,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('PackageModules');
+    await queryInterface.dropTable('Permissions');
   }
 };

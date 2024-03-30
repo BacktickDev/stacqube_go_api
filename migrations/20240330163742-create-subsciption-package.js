@@ -5,12 +5,21 @@ module.exports = {
     await queryInterface.createTable('SubscriptionPackages', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
       },
       packageName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      packageDescription: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      packagePrice: {
+        type: Sequelize.FLOAT,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

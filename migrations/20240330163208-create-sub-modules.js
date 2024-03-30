@@ -5,12 +5,23 @@ module.exports = {
     await queryInterface.createTable('SubModules', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
+      },
+      moduleId: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'Modules',
+          key: 'id'
+        }
       },
       subModuleName: {
         type: Sequelize.STRING
+      },
+      status:{
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
       },
       createdAt: {
         allowNull: false,

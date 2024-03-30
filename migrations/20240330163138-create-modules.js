@@ -5,12 +5,19 @@ module.exports = {
     await queryInterface.createTable('Modules', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
       },
       moduleName: {
         type: Sequelize.STRING
+      },
+      moduleDescription: {
+        type: Sequelize.STRING
+      },
+      status:{
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
       },
       createdAt: {
         allowNull: false,
