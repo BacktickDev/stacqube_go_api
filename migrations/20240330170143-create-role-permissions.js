@@ -24,10 +24,17 @@ module.exports = {
           key: 'id'
         }
       },
-      permissionId: {
+      companyId: {
         type: Sequelize.UUID,
         references: {
-          model: 'Permissions',
+          model: 'Companies',
+          key: 'id'
+        }
+      },
+      modulePermissionId: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'ModulePermissions',
           key: 'id'
         }
       },

@@ -27,6 +27,25 @@ class CompanyController
             res.status(404).send(error.message);
         }
     }
+
+    async getSubscribedModulesAndPackageDetails(req, res) {
+        try {
+            const companySubscriptions = await CompanyService.getSubscribedModulesAndPackageDetails(req.params.companyId);
+            res.status(200).json(companySubscriptions);
+        } catch (error) {
+            res.status(400).send(error.message);
+        }
+    }
+
+    async getCompanyDetails(req, res) {
+        try {
+            const { companyId } = req.params;
+            const companyDetails = CompanyService.getCompanyDetails(companyId);
+            res.status(200).json(companyDetails);
+        } catch (error) {
+            res.status(400).send(error.message);
+        }
+    }
 }
 
 

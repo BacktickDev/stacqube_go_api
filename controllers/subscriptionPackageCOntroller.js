@@ -8,13 +8,13 @@ class SubscriptionPackageController {
                 packageName,
                 packageDescription,
                 packagePrice,
-                packageDuration
+                packageDurationType
             } = req.body;
             const subscriptionPackage = await SubscriptionPackageService.createSubscriptionPackage(
                 packageName,
                 packageDescription,
                 packagePrice,
-                packageDuration
+                packageDurationType
             );
             res.status(201).json(subscriptionPackage);
         } catch (error) {

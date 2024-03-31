@@ -1,6 +1,9 @@
 
 const {DataTypes} = require('sequelize');
 const sequelize = require('../config/sequlize');
+const CompanySubscriptions = require('./companysubscriptions');
+const Modules = require('./modules');
+const SubscriptionPackage = require('./subsciptionpackage');
 
 const PackageModules = sequelize.define('PackageModules', {
     id: {
@@ -22,10 +25,24 @@ const PackageModules = sequelize.define('PackageModules', {
             key: 'id'
         }
     },
-    status:{
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
-    }
+   
 });
+
+PackageModules.belongsTo(SubscriptionPackage, {
+    foreignKey: 'packageId'
+});
+
+
+PackageModules.hasMany(Modules, {
+    foreignKey: 'id',
+    sourceKey: 'moduleId'
+
+});
+
+
+
+
+
+
 
 module.exports = PackageModules;

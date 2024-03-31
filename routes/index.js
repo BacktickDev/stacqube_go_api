@@ -13,6 +13,7 @@ const rolePermissionRoute = require('./role-permissionRoute');
 const packageModuleRoute = require('./packageModuleRoute');
 const subscriptionPackageRoute = require('./subscriptionPackageRoute');
 const permissionRoute = require('./permissionRoute');
+const modulePermissionRoute = require('./modulePermissionRoute');
 
 router.use('/company', companyRoute);
 router.use('/role', roleRoute);
@@ -25,6 +26,7 @@ router.use('/rolePermission', rolePermissionRoute);
 router.use('/packageModule', packageModuleRoute);
 router.use('/subscriptionPackage', subscriptionPackageRoute);
 router.use('/permission', permissionRoute);
+router.use('/modulePermission', modulePermissionRoute);
 
 
 

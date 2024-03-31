@@ -1,6 +1,7 @@
 const {DataTypes} = require('sequelize');
 const sequelize = require('../config/sequlize');
 
+
 const SubModules = sequelize.define('SubModules', {
     id: {
         type: DataTypes.UUID,
@@ -12,7 +13,8 @@ const SubModules = sequelize.define('SubModules', {
         references: {
             model: 'Modules',
             key: 'id'
-        }
+        },
+        
     },
     subModuleName: {
         type: DataTypes.STRING
@@ -22,5 +24,12 @@ const SubModules = sequelize.define('SubModules', {
         defaultValue: true
     }
 });
+
+
+
+
+
+
+
 
 module.exports = SubModules;

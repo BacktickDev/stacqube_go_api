@@ -1,11 +1,11 @@
 const companySubscriptionModel = require('../models/companysubscriptions');
 
 class CompanySubscriptionService {
-    async createCompanySubscription(companyId, packageId, startDate, endDate) {
+    async createCompanySubscription(companyId, packageModuleId, startDate, endDate) {
         try {
             const companySubscriptionData = {
                 companyId: companyId,
-                packageId: packageId,
+                packageModuleId: packageModuleId,
                 startDate: startDate,
                 endDate: endDate
             };

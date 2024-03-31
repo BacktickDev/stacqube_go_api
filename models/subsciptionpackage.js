@@ -20,9 +20,9 @@ const SubscriptionPackage = sequelize.define('SubscriptionPackage', {
         type: DataTypes.DOUBLE,
         allowNull: false
     },
-    packageDuration: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+    packageDurationType: {
+        type: DataTypes.STRING,
+        allowNull: false    
     },
     status: {
         type: DataTypes.BOOLEAN,
@@ -30,5 +30,7 @@ const SubscriptionPackage = sequelize.define('SubscriptionPackage', {
         defaultValue: true
     }
 });
+
+
 
 module.exports = SubscriptionPackage;

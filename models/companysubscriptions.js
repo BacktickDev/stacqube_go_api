@@ -1,6 +1,9 @@
 
 const {DataTypes} = require('sequelize');
 const sequelize = require('../config/sequlize');
+const PackageModules = require('./packagemodules');
+const Companies = require('./company');
+const SubscriptionPackage = require('./subsciptionpackage');
 
 const CompanySubscriptions = sequelize.define('CompanySubscriptions', {
     id: {
@@ -10,11 +13,19 @@ const CompanySubscriptions = sequelize.define('CompanySubscriptions', {
     },
     companyId: {
         type: DataTypes.UUID,
-        allowNull: false
+        allowNull: false,
+        references: {
+            model: 'Companies',
+            key: 'id'
+        }
     },
-    packageId: {
+    packageModuleId: {
         type: DataTypes.UUID,
-        allowNull: false
+        allowNull: false,
+        references: {
+            model: 'PackageModules',
+            key: 'id'
+        }
     },
     startDate: {
         type: DataTypes.DATE,
@@ -30,5 +41,19 @@ const CompanySubscriptions = sequelize.define('CompanySubscriptions', {
         defaultValue: true
     }
 })
+
+CompanySubscriptions.belongsTo(Companies, {
+    foreignKey: 'companyId'
+});
+
+
+
+
+CompanySubscriptions.hasMany(PackageModules, {
+    foreignKey: 'id',
+    sourceKey: 'packageModuleId'
+    
+});
+
 
 module.exports = CompanySubscriptions;

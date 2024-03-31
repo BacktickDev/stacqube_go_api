@@ -1,4 +1,5 @@
 const modulesModel = require('../models/modules');
+const submodulesModel = require('../models/submodules');
 
 class ModulesService {
     async createModule(
@@ -18,7 +19,15 @@ class ModulesService {
        
     }
     async getModules() {
-        return await modulesModel.findAll();
+        //Include submodules
+        return await modulesModel.findAll({
+            include:[
+                {
+                    model: submodulesModel,
+                    as: 'submodules'
+                }
+            ]
+        });
     }
     async getModuleById(id) {
         return await modulesModel.findByPk(id);

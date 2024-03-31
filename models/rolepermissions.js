@@ -15,10 +15,17 @@ const RolePermissions = sequelize.define('RolePermissions', {
             key: 'id'
         }
     },
-    permissionId: {
+    companyId:{
         type: DataTypes.UUID,
         references: {
-            model: 'Permissions',
+            model: 'Companies',
+            key: 'id'
+        }
+    },
+    modulePermissionId: {
+        type: DataTypes.UUID,
+        references: {
+            model: 'ModulePermissions',
             key: 'id'
         }
     },

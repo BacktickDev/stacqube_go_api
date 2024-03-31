@@ -2,14 +2,14 @@ const  SubscriptionPackageModel = require('../models/subsciptionpackage');
 
 class SubscriptionPackageService {
     async createSubscriptionPackage(
-        packageName, packageDescription, packagePrice, packageDuration
+        packageName, packageDescription, packagePrice, packageDurationType
     ) {
         try{
             const subscriptionPackageData = {
                 packageName: packageName,
                 packageDescription: packageDescription,
                 packagePrice: packagePrice,
-                packageDuration: packageDuration
+                packageDurationType: packageDurationType
             };
             const subscriptionPackage = await SubscriptionPackageModel.create(subscriptionPackageData);
             return subscriptionPackage;

@@ -3,8 +3,8 @@ const CompanySubscriptionService = require('../services/companySubscriptionServi
 class CompanySubscriptionController {
     async createCompanySubscription(req, res) {
         try {
-            const {companyId, packageId, startDate, endDate} = req.body;
-            const companySubscription = await CompanySubscriptionService.createCompanySubscription({companyId, packageId, startDate, endDate});
+            const {companyId, packageModuleId, startDate, endDate} = req.body;
+            const companySubscription = await CompanySubscriptionService.createCompanySubscription(companyId, packageModuleId, startDate, endDate);
             res.status(201).json(companySubscription);
         } catch (error) {
             res.status(400).send(error.message);

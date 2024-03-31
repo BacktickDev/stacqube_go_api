@@ -21,6 +21,15 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: false
       },
+      packageDurationType:{
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      status: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+        defaultValue: true
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
